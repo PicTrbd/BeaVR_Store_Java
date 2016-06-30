@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import store_launcher.ui.CloseButton?>
+<?import store_launcher.ui.MinimizeButton?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+            fx:controller="store_launcher.controllers.LoginController">
+    <top>
+        <HBox fx:id="title_bar" alignment="CENTER_RIGHT">
+            <children>
+                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/beavr.png"/>
+                    <HBox.margin>
+                        <Insets right="270.0"/>
+                    </HBox.margin>
+                </ImageView>
+                <MinimizeButton prefHeight="31.0"/>
+                <CloseButton prefHeight="31.0"/>
+            </children>
+        </HBox>
+    </top>
+    <center>
+        <GridPane fx:id="root" alignment="center" hgap="10" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+            </rowConstraints>
+            <children>
+                <ImageView fitHeight="138.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true"
+                           GridPane.halignment="CENTER" GridPane.rowIndex="0">
+                        <Image url="@../images/beavr.png"/>
+                </ImageView>
+                <Separator prefWidth="200.0" GridPane.rowIndex="1"/>
+                <Label prefHeight="17.0" prefWidth="279.0" text="%email" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets bottom="-5.0"/>
+                    </GridPane.margin>
+                </Label>
+                <TextField fx:id="email_field" prefHeight="0.0" prefWidth="279.0" promptText="%email_placeholder"
+                           GridPane.rowIndex="3" />
+
+                <Label prefHeight="17.0" prefWidth="279.0" text="%password" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets top="5.0" bottom="-5.0"/>
+                    </GridPane.margin>
+                </Label>
+                <PasswordField fx:id="password_field" prefHeight="25.0" prefWidth="279.0"
+                               promptText="%password_placeholder" GridPane.rowIndex="5" />
+                <Hyperlink onAction="#handleForgotPasswordHyperlink" text="%forgot_password" GridPane.rowIndex="6" styleClass="forgotPassword">
+                    <GridPane.margin>
+                        <Insets top="-7.0" left="-3.0"/>
+                    </GridPane.margin>
+                </Hyperlink>
+                <HBox alignment="bottom_left" GridPane.rowIndex="7">
+                    <children>
+                        <ProgressIndicator fx:id="login_progressindicator" prefHeight="25" prefWidth="25"
+                                           visible="false">
+                            <HBox.margin>
+                                <Insets left="55.0"/>
+                            </HBox.margin>
+                        </ProgressIndicator>
+                    </children>
+                </HBox>
+                <HBox alignment="center_left" spacing="10" GridPane.rowIndex="7">
+                    <Button fx:id="login_button" mnemonicParsing="false" onAction="#handleLogInButton" prefHeight="31.0" prefWidth="135.0" text="%login"/>
+                </HBox>
+                <Text fx:id="error_text" visible="false" GridPane.rowIndex="8"/>
+                <CheckBox styleClass="checkBox" mnemonicParsing="false" text="%remember_me" GridPane.rowIndex="9"/>
+            </children>
+        </GridPane>
+    </center>
+    <bottom>
+        <GridPane fx:id="register_bar" prefWidth="350.0" prefHeight="80.0" alignment="center">
+            <Hyperlink onAction="#handleRegisterHyperlink" fx:id="register_hyperlink" text="%create_account"
+                       GridPane.rowIndex="0" styleClass="createAccount"/>
+        </GridPane>
+    </bottom>
+</BorderPane>
