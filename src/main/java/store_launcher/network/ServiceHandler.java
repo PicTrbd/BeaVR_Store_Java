@@ -2,14 +2,11 @@ package store_launcher.network;
 
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
+
 /**
  * Created by Nicolas on 12/18/2015.
  */
 public class ServiceHandler extends Service<Object> {
-
-    public interface Request {
-        Object performRequest();
-    }
 
     Request mRequest;
 
@@ -25,5 +22,9 @@ public class ServiceHandler extends Service<Object> {
                 return mRequest.performRequest();
             }
         };
+    }
+
+    public interface Request {
+        Object performRequest();
     }
 }

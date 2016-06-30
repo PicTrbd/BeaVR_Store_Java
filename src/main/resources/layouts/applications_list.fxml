@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import ui.CloseButton?>
+<?import ui.LogOutButton?>
+<?import ui.MaximizeButton?>
+<?import ui.MinimizeButton?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+            fx:controller="store_app_list.controllers.ApplicationsListController" fx:id="root">
+    <!-- Les deux barres situées en haut de la fenêtre et qui seront présentes dans chaque fenêtre !-->
+    <top>
+        <BorderPane>
+            <top>
+                <BorderPane fx:id="title_bar">
+                    <left>
+                        <HBox styleClass="title_bar_logo" alignment="CENTER">
+                            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../images/beavr.png"/>
+                            </ImageView>
+                        </HBox>
+                    </left>
+                    <center>
+                        <HBox prefHeight="31.0"/>
+                    </center>
+                    <right>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <MaximizeButton fx:id="maximize_button" prefHeight="31.0"/>
+                                <MinimizeButton prefHeight="31.0"/>
+                                <CloseButton prefHeight="31.0"/>
+                            </children>
+                        </HBox>
+                    </right>
+                </BorderPane>
+            </top>
+
+            <center>
+                <BorderPane fx:id="links_bar" minHeight="70.0">
+                    <left>
+                        <HBox alignment="CENTER">
+                            <Hyperlink fx:id="" mnemonicParsing="false" text="%previous_arrow"
+                                       styleClass="links_bar_arrows">
+                                <HBox.margin>
+                                    <Insets left="10.0" top="-5.0"/>
+                                </HBox.margin>
+                            </Hyperlink>
+                            <Hyperlink fx:id="" mnemonicParsing="false" text="%next_arrow"
+                                       styleClass="links_bar_arrows">
+                                <HBox.margin>
+                                    <Insets left="5.0" top="-5.0"/>
+                                </HBox.margin>
+                            </Hyperlink>
+                            <Hyperlink fx:id="" mnemonicParsing="false" text="%STORE" styleClass="links_bar_hyperlink"/>
+                            <Hyperlink fx:id="" mnemonicParsing="false" text="%LIBRARY"
+                                       onAction="#temporary_list_comments"
+                                       styleClass="links_bar_hyperlink"/>
+                        </HBox>
+                    </left>
+                    <right>
+                        <HBox alignment="CENTER">
+                            <Hyperlink text="Pseudonyme" styleClass="user_pseudo"/>
+                            <LogOutButton alignment="CENTER">
+                                <HBox.margin>
+                                    <Insets top="-2"/>
+                                </HBox.margin>
+                            </LogOutButton>
+                        </HBox>
+                    </right>
+                </BorderPane>
+            </center>
+        </BorderPane>
+    </top>
+
+    <!-- Page applications !-->
+    <center>
+        <BorderPane>
+            <top>
+                <GridPane>
+                    <rowConstraints>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                    </rowConstraints>
+                    <BorderPane GridPane.rowIndex="1" fx:id="top_bar" prefWidth="1980" prefHeight="50">
+                        <left>
+                            <HBox alignment="CENTER_LEFT">
+                                <ComboBox fx:id="theme_combobox">
+                                    <HBox.margin>
+                                        <Insets left="10.0" top="-5.0"/>
+                                    </HBox.margin>
+                                </ComboBox>
+                                <ComboBox fx:id="filter_combobox">
+                                    <HBox.margin>
+                                        <Insets left="10.0" top="-5.0"/>
+                                    </HBox.margin>
+                                </ComboBox>
+                            </HBox>
+                        </left>
+                        <right>
+                            <HBox alignment="CENTER_RIGHT">
+                                <Hyperlink text="Des suggestions ? Contactez-nous !" styleClass="suggestions_link"
+                                           onAction="#handleFeedbackLink">
+                                    <HBox.margin>
+                                        <Insets right="10.0" top="-5.0"/>
+                                    </HBox.margin>
+                                </Hyperlink>
+                            </HBox>
+                        </right>
+                    </BorderPane>
+                </GridPane>
+            </top>
+            <left>
+                <VBox fx:id="filters_menu_holder" styleClass="filters_menu">
+                    <Text text="Catégories">
+                        <VBox.margin>
+                            <Insets left="10.0" top="5.0"/>
+                        </VBox.margin>
+                    </Text>
+                    <VBox fx:id="category_box_holder">
+                        <VBox.margin>
+                            <Insets top="5.0" right="10.0"/>
+                        </VBox.margin>
+                    </VBox>
+                    <Separator>
+                        <VBox.margin>
+                            <Insets top="15.0"/>
+                        </VBox.margin>
+                    </Separator>
+                    <Text text="Matériel">
+                        <VBox.margin>
+                            <Insets left="10.0" top="15.0"/>
+                        </VBox.margin>
+                    </Text>
+                    <VBox fx:id="device_box_holder">
+                        <VBox.margin>
+                            <Insets top="5.0" right="10.0"/>
+                        </VBox.margin>
+                    </VBox>
+                    <Separator>
+                        <VBox.margin>
+                            <Insets top="15.0"/>
+                        </VBox.margin>
+                    </Separator>
+                    <Separator orientation="VERTICAL"/>
+                </VBox>
+            </left>
+            <center>
+                <ScrollPane fitToHeight="true" fitToWidth="true">
+                    <VBox fx:id="application_list"/>
+                    <BorderPane.margin>
+                        <Insets bottom="10.0" right="4.0"/>
+                    </BorderPane.margin>
+                </ScrollPane>
+            </center>
+        </BorderPane>
+    </center>
+</BorderPane>

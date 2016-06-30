@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<?import store_launcher.ui.CloseButton?>
-<?import store_launcher.ui.MinimizeButton?>
+<?import ui.CloseButton?>
+<?import ui.MinimizeButton?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
-            fx:controller="store_launcher.controllers.LoginController">
+            fx:controller="store_launcher.controllers.LoginController" fx:id="root">
     <top>
-        <HBox fx:id="title_bar" alignment="CENTER_RIGHT">
-            <children>
-                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../images/beavr.png"/>
-                    <HBox.margin>
-                        <Insets right="270.0"/>
-                    </HBox.margin>
-                </ImageView>
-                <MinimizeButton prefHeight="31.0"/>
-                <CloseButton prefHeight="31.0"/>
-            </children>
-        </HBox>
+        <BorderPane fx:id="title_bar">
+            <left>
+                <HBox styleClass="title_bar_logo" alignment="CENTER">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../images/beavr.png"/>
+                    </ImageView>
+                </HBox>
+            </left>
+            <center>
+                <HBox prefHeight="31.0"/>
+            </center>
+            <right>
+                <HBox alignment="CENTER">
+                    <children>
+                        <MinimizeButton prefHeight="31.0"/>
+                        <CloseButton prefHeight="31.0"/>
+                    </children>
+                </HBox>
+            </right>
+        </BorderPane>
     </top>
     <center>
-        <GridPane fx:id="root" alignment="center" hgap="10" vgap="10">
+        <GridPane alignment="center" hgap="10" vgap="10">
             <columnConstraints>
                 <ColumnConstraints/>
             </columnConstraints>
@@ -44,7 +52,7 @@
             <children>
                 <ImageView fitHeight="138.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true"
                            GridPane.halignment="CENTER" GridPane.rowIndex="0">
-                        <Image url="@../images/beavr.png"/>
+                    <Image url="@../images/beavr.png"/>
                 </ImageView>
                 <Separator prefWidth="200.0" GridPane.rowIndex="1"/>
                 <Label prefHeight="17.0" prefWidth="279.0" text="%email" GridPane.rowIndex="2">
@@ -53,7 +61,7 @@
                     </GridPane.margin>
                 </Label>
                 <TextField fx:id="email_field" prefHeight="0.0" prefWidth="279.0" promptText="%email_placeholder"
-                           GridPane.rowIndex="3" />
+                           GridPane.rowIndex="3"/>
 
                 <Label prefHeight="17.0" prefWidth="279.0" text="%password" GridPane.rowIndex="4">
                     <GridPane.margin>
@@ -61,8 +69,9 @@
                     </GridPane.margin>
                 </Label>
                 <PasswordField fx:id="password_field" prefHeight="25.0" prefWidth="279.0"
-                               promptText="%password_placeholder" GridPane.rowIndex="5" />
-                <Hyperlink onAction="#handleForgotPasswordHyperlink" text="%forgot_password" GridPane.rowIndex="6" styleClass="forgotPassword">
+                               promptText="%password_placeholder" GridPane.rowIndex="5"/>
+                <Hyperlink onAction="#handleForgotPasswordHyperlink" text="%forgot_password" GridPane.rowIndex="6"
+                           styleClass="forgotPassword">
                     <GridPane.margin>
                         <Insets top="-7.0" left="-3.0"/>
                     </GridPane.margin>
@@ -78,10 +87,12 @@
                     </children>
                 </HBox>
                 <HBox alignment="center_left" spacing="10" GridPane.rowIndex="7">
-                    <Button fx:id="login_button" mnemonicParsing="false" onAction="#handleLogInButton" prefHeight="31.0" prefWidth="135.0" text="%login"/>
+                    <Button fx:id="login_button" mnemonicParsing="false" onAction="#handleLogInButton" prefHeight="31.0"
+                            prefWidth="135.0" text="%login"/>
                 </HBox>
                 <Text fx:id="error_text" visible="false" GridPane.rowIndex="8"/>
-                <CheckBox styleClass="checkBox" mnemonicParsing="false" text="%remember_me" GridPane.rowIndex="9"/>
+                <CheckBox fx:id="remember_me_checkbox" styleClass="checkBox" mnemonicParsing="false" text="%remember_me"
+                          GridPane.rowIndex="9"/>
             </children>
         </GridPane>
     </center>

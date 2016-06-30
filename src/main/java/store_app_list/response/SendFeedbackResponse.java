@@ -1,11 +1,11 @@
-package store_launcher.response;
+package store_app_list.response;
 
 /**
- * Created by Thomas on 22/01/2016.
+ * Created by Thomas on 05/12/2015.
  * <p>
- * This class is the basic response for the forgotten password request on the API.
+ * This class is the basic response for the send feedback request on the API.
  */
-public class ForgottenPasswordResponse {
+public class SendFeedbackResponse {
 
     // True if there is an error, False otherwise
     public boolean Error;

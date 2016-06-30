@@ -1,6 +1,8 @@
 package store_launcher.controllers;
 
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,14 +35,23 @@ public class RegistrationController implements Initializable {
     public static final String emailField = "email";
     public static final String passwordField = "password";
 
+    public static final int EMAIL_LIMIT = 64;
+
     // Value set according to the fx:id in the registration_old.fxml
-    @FXML private Parent root;
-    @FXML private TextField email_field;
-    @FXML private PasswordField password_field;
-    @FXML private Button register_button;
-    @FXML private Hyperlink login_hyperlink;
-    @FXML private ProgressIndicator register_progressindicator;
-    @FXML private Text error_text;
+    @FXML
+    private Parent root;
+    @FXML
+    private TextField email_field;
+    @FXML
+    private PasswordField password_field;
+    @FXML
+    private Button register_button;
+    @FXML
+    private Hyperlink login_hyperlink;
+    @FXML
+    private ProgressIndicator register_progressindicator;
+    @FXML
+    private Text error_text;
 
     private ResourceBundle mResources;
     private Locale mLocale;
@@ -100,7 +111,7 @@ public class RegistrationController implements Initializable {
 
     @FXML
     protected void handleLoginHyperlink(ActionEvent event) throws InterruptedException, IOException {
-        ControllersTools.showWindow("BeaVR - " + mResources.getString("login"),
+        ControllersTools.showWindow("BeaVR - " + mResources.getString("login"), 350, 500,
                 getClass().getResource("/layouts/login.fxml"),
                 getClass().getResource("/styles/launcher.css"),
                 root, new Locale("FR"));
@@ -109,6 +120,17 @@ public class RegistrationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         mResources = resources;
         mLocale = mResources.getLocale();
+        // Limit the sizes of the textfield and textarea
+        email_field.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    // Check if the new character is greater than LIMIT
+                    if (email_field.getText().length() >= EMAIL_LIMIT)
+                        email_field.setText(email_field.getText().substring(0, EMAIL_LIMIT));
+                }
+            }
+        });
         register_button.disableProperty().bind(
                 Bindings.isEmpty(email_field.textProperty())
                         .or(Bindings.isEmpty(password_field.textProperty())));

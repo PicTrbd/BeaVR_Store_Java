@@ -1,4 +1,4 @@
-package store_launcher.ui;
+package ui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

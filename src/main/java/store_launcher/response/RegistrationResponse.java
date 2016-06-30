@@ -2,7 +2,7 @@ package store_launcher.response;
 
 /**
  * Created by Thomas on 05/12/2015.
- *
+ * <p>
  * This class is the basic response for the registration request on the API.
  */
 public class RegistrationResponse {

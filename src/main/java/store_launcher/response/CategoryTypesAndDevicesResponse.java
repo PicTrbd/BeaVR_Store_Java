@@ -1,18 +1,15 @@
 package store_launcher.response;
 
 /**
- * Created by Thomas on 05/12/2015.
- * <p>
- * This class is the basic response for the login request on the API.
+ * Created by Nicolas on 2/20/2016.
  */
-public class LoginResponse {
-
+public class CategoryTypesAndDevicesResponse {
     // True if there is an error, False otherwise
     public boolean Error;
     // Error code returned
     public int Code;
     // Data (all the row about the user)
-    public Data Data;
+    public CategoryTypesAndDevices CategoryTypesAndDevices;
 
     public boolean getError() {
         return Error;
@@ -30,16 +27,10 @@ public class LoginResponse {
         Code = code;
     }
 
-    public class Data {
+    public static class CategoryTypesAndDevices {
 
-        public int idUsers;
-        public String email;
-        public String password;
-        public String lastname;
-        public String firstname;
-        public int role;
-        public String registration;
-
+        public String CategoryTypes;
+        public String Devices;
     }
 
 }

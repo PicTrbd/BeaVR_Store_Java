@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import ui.CloseButton?>
+<?import ui.LogOutButton?>
+<?import ui.MaximizeButton?>
+<?import ui.MinimizeButton?>
+<?import javafx.scene.text.Text?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+            fx:controller="store_app_list.controllers.CommentsListController" fx:id="root">
+    <!-- Les deux barres situées en haut de la fenêtre et qui seront présentes dans chaque fenêtre !-->
+    <top>
+        <BorderPane>
+            <top>
+                <BorderPane fx:id="title_bar">
+                    <left>
+                        <HBox styleClass="title_bar_logo" alignment="CENTER">
+                            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../images/beavr.png"/>
+                            </ImageView>
+                        </HBox>
+                    </left>
+                    <center>
+                        <HBox prefHeight="31.0"/>
+                    </center>
+                    <right>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <MaximizeButton fx:id="maximize_button" prefHeight="31.0"/>
+                                <MinimizeButton prefHeight="31.0"/>
+                                <CloseButton prefHeight="31.0"/>
+                            </children>
+                        </HBox>
+                    </right>
+                </BorderPane>
+            </top>
+
+            <center>
+                <BorderPane fx:id="links_bar" minHeight="70.0">
+                    <left>
+                        <HBox alignment="CENTER">
+                            <Hyperlink fx:id="" mnemonicParsing="false" text="%previous_arrow"
+                                       styleClass="links_bar_arrows">
+                                <HBox.margin>
+                                    <Insets left="10.0" top="-5.0"/>
+                                </HBox.margin>
+                            </Hyperlink>
+                            <Hyperlink fx:id="" mnemonicParsing="false" text="%next_arrow"
+                                       styleClass="links_bar_arrows">
+                                <HBox.margin>
+                                    <Insets left="5.0" top="-5.0"/>
+                                </HBox.margin>
+                            </Hyperlink>
+                            <Hyperlink onAction="#handleStoreHyperlink" mnemonicParsing="false" text="%STORE"
+                                       styleClass="links_bar_hyperlink"/>
+                            <Hyperlink mnemonicParsing="false" text="%LIBRARY" styleClass="links_bar_hyperlink"/>
+                        </HBox>
+                    </left>
+                    <right>
+                        <HBox alignment="CENTER">
+                            <Hyperlink text="%login_placeholder" styleClass="user_pseudo"/>
+                            <LogOutButton alignment="CENTER">
+                                <HBox.margin>
+                                    <Insets top="-2"/>
+                                </HBox.margin>
+                            </LogOutButton>
+                        </HBox>
+                    </right>
+                </BorderPane>
+            </center>
+        </BorderPane>
+    </top>
+
+    <center>
+        <VBox>
+            <ScrollPane fitToHeight="true" fitToWidth="true">
+                <GridPane alignment="center" fx:id="comments_list_page" vgap="20">
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+                <Text styleClass="comments_list_title" text="%comments_list_title" GridPane.rowIndex="0">
+                    <GridPane.margin>
+                        <Insets top="30" bottom="-10"/>
+                    </GridPane.margin>
+                </Text>
+                <Separator maxWidth="375" GridPane.rowIndex="1"/>
+                <VBox fx:id="comments_list" spacing="10" GridPane.rowIndex="2"/>
+                </GridPane>
+            </ScrollPane>
+            <BorderPane.margin>
+                <Insets bottom="10" right="4"/>
+            </BorderPane.margin>
+        </VBox>
+    </center>
+
+</BorderPane>

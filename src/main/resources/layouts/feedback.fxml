@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import ui.CloseButton?>
+<?import ui.LogOutButton?>
+<?import ui.MaximizeButton?>
+<?import ui.MinimizeButton?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+            fx:controller="store_app_list.controllers.FeedbackController" fx:id="root">
+    <!-- Les deux barres situées en haut de la fenêtre et qui seront présentes dans chaque fenêtre !-->
+    <top>
+        <BorderPane>
+            <top>
+                <BorderPane fx:id="title_bar">
+                    <left>
+                        <HBox styleClass="title_bar_logo" alignment="CENTER">
+                            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../images/beavr.png"/>
+                            </ImageView>
+                        </HBox>
+                    </left>
+                    <center>
+                        <HBox prefHeight="31.0"/>
+                    </center>
+                    <right>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <MaximizeButton fx:id="maximize_button" prefHeight="31.0"/>
+                                <MinimizeButton prefHeight="31.0"/>
+                                <CloseButton prefHeight="31.0"/>
+                            </children>
+                        </HBox>
+                    </right>
+                </BorderPane>
+            </top>
+
+            <center>
+                <BorderPane fx:id="links_bar" minHeight="70.0">
+                    <left>
+                        <HBox alignment="CENTER">
+                            <Hyperlink fx:id="" mnemonicParsing="false" text="%previous_arrow"
+                                       styleClass="links_bar_arrows">
+                                <HBox.margin>
+                                    <Insets left="10.0" top="-5.0"/>
+                                </HBox.margin>
+                            </Hyperlink>
+                            <Hyperlink fx:id="" mnemonicParsing="false" text="%next_arrow"
+                                       styleClass="links_bar_arrows">
+                                <HBox.margin>
+                                    <Insets left="5.0" top="-5.0"/>
+                                </HBox.margin>
+                            </Hyperlink>
+                            <Hyperlink onAction="#handleStoreHyperlink" mnemonicParsing="false" text="%STORE"
+                                       styleClass="links_bar_hyperlink"/>
+                            <Hyperlink mnemonicParsing="false" text="%LIBRARY" styleClass="links_bar_hyperlink"/>
+                        </HBox>
+                    </left>
+                    <right>
+                        <HBox alignment="CENTER">
+                            <Hyperlink text="%login_placeholder" styleClass="user_pseudo"/>
+                            <LogOutButton alignment="CENTER">
+                                <HBox.margin>
+                                    <Insets top="-2"/>
+                                </HBox.margin>
+                            </LogOutButton>
+                        </HBox>
+                    </right>
+                </BorderPane>
+            </center>
+        </BorderPane>
+    </top>
+
+    <!-- Page feedback !-->
+    <center>
+        <VBox>
+            <GridPane alignment="center" vgap="20">
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+                <Text styleClass="feedback_title" text="%feedback_title" GridPane.rowIndex="0">
+                    <GridPane.margin>
+                        <Insets top="30" bottom="-10"/>
+                    </GridPane.margin>
+                </Text>
+                <Separator maxWidth="375" GridPane.rowIndex="1"/>
+                <Text styleClass="feedback_text" GridPane.rowIndex="2" wrappingWidth="800" text="%feedback_text"/>
+                <VBox fx:id="feedback_form" GridPane.rowIndex="3">
+                    <VBox>
+                        <Label text="%subject_label"/>
+                        <TextField fx:id="subject_field">
+                            <VBox.margin>
+                                <Insets top="3.0"/>
+                            </VBox.margin>
+                        </TextField>
+                    </VBox>
+                    <VBox>
+                        <Label text="%message_label"/>
+                        <TextArea fx:id="message_field" prefRowCount="16" wrapText="true">
+                            <VBox.margin>
+                                <Insets top="3.0"/>
+                            </VBox.margin>
+                        </TextArea>
+                        <VBox.margin>
+                            <Insets top="20.0"/>
+                        </VBox.margin>
+                    </VBox>
+                    <VBox>
+                        <CheckBox fx:id="recontact_checkbox" text="%be_contacted">
+                            <VBox.margin>
+                                <Insets top="10.0" bottom="10.0"/>
+                            </VBox.margin>
+                        </CheckBox>
+                        <GridPane>
+                            <rowConstraints>
+                                <RowConstraints/>
+                            </rowConstraints>
+                            <HBox alignment="center_left" GridPane.rowIndex="0">
+                                <children>
+                                    <ProgressIndicator fx:id="login_progressindicator" prefHeight="25" prefWidth="25"
+                                                       visible="false">
+                                        <HBox.margin>
+                                            <Insets left="25.0"/>
+                                        </HBox.margin>
+                                    </ProgressIndicator>
+                                </children>
+                            </HBox>
+                            <HBox fx:id="validate_box" alignment="center_left" minHeight="30" spacing="10" GridPane.rowIndex="0">
+                                <Button fx:id="sendFeedback_button" visible="true" onAction="#handleSendFeedbackButton" text="%send"/>
+                                <Text fx:id="error_text" visible="false"/>
+                            </HBox>
+                        </GridPane>
+
+                    </VBox>
+                    <GridPane.margin>
+                        <Insets top="10"/>
+                    </GridPane.margin>
+                </VBox>
+
+            </GridPane>
+        </VBox>
+    </center>
+</BorderPane>

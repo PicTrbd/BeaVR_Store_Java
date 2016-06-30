@@ -34,9 +34,12 @@ public class ForgottenPasswordController implements Initializable {
 
     public static final String emailField = "email";
 
-    @FXML private Parent root;
-    @FXML private TextField email_field;
-    @FXML private Button reset_button;
+    @FXML
+    private Parent root;
+    @FXML
+    private TextField email_field;
+    @FXML
+    private Button reset_button;
     @FXML
     private Button back_button;
     @FXML
@@ -91,7 +94,7 @@ public class ForgottenPasswordController implements Initializable {
         JSONParser parser = new JSONParser(Config.RESET_PASSWORD_URL);
 
         // Parameters of the post request
-        List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+        List<NameValuePair> urlParameters = new ArrayList<>();
         urlParameters.add(new BasicNameValuePair(emailField, email_field.getText()));
 
         // Execution of the request
@@ -101,7 +104,7 @@ public class ForgottenPasswordController implements Initializable {
 
     @FXML
     protected void handleBackButton(ActionEvent event) throws InterruptedException, IOException {
-        ControllersTools.showWindow("BeaVR - " + mResources.getString("login"),
+        ControllersTools.showWindow("BeaVR - " + mResources.getString("login"), 350, 500,
                 getClass().getResource("/layouts/login.fxml"),
                 getClass().getResource("/styles/launcher.css"),
                 root, new Locale("FR"));
